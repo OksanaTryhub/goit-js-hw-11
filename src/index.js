@@ -66,7 +66,7 @@ async function onLoadMore(e) {
 }
 
 function render() {
-  items = images;
+  const items = images;
 
   const galleryMarkup = items.map(getImageTemplate);
 
