@@ -12,7 +12,7 @@ import './css/styles.css';
 let page = 1;
 const per_page = 40;
 let searchQuery = null;
-let items = [];
+let images = [];
 let totalPages = 0;
 
 refs.formInput.setAttribute('required', true);
