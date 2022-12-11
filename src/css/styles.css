@@ -15,6 +15,11 @@ body {
   color: #212121;
   line-height: 1.5;
 }
+@media screen and (max-width: 300px) {
+  .form-wrapper button {
+    margin-top: 4px;
+  }
+}
 
 @media screen and (min-width: 480px) {
   .container {
@@ -53,7 +58,7 @@ body {
 }
 
 .form-wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
