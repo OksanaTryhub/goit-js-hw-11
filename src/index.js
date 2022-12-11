@@ -1,6 +1,7 @@
 import { fetchImages } from './js/fetch-images';
 import { getImageTemplate } from './js/image-markup';
 import { refs } from './js/refs';
+import { smoothScroll } from './js/smooth-scroll';
 
 import SimpleLightbox from 'simplelightbox';
 import { Notify } from 'notiflix';
@@ -8,14 +9,13 @@ import { Notify } from 'notiflix';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import './css/styles.css';
 
-refs.formInput.setAttribute('required', true);
-
 let page = 1;
 const per_page = 40;
 let searchQuery = null;
 let items = [];
 let totalPages = 0;
 
+refs.formInput.setAttribute('required', true);
 refs.searchForm.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
@@ -56,6 +56,7 @@ async function onLoadMore(e) {
   images = response.data.hits;
   const totalImages = response.data.totalHits;
   totalPages = totalImages / per_page;
+
   if (totalPages <= page) {
     Notify.info("We're sorry, but you've reached the end of search results.");
     lockLoadMoreBtn();
@@ -73,17 +74,6 @@ function render() {
 
   const lightbox = new SimpleLightbox('.gallery a');
   lightbox.refresh();
-}
-
-function smoothScroll() {
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight,
-    behavior: 'smooth',
-  });
 }
 
 function lockLoadMoreBtn() {
