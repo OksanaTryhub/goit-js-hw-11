@@ -45,6 +45,7 @@ async function onSearch(e) {
     Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
+    lockLoadMoreBtn();
   }
   cleanMarkup();
   render();
@@ -62,7 +63,7 @@ async function onLoadMore(e) {
     lockLoadMoreBtn();
   }
   render();
-  smoothScroll();
+  smoothScroll('.gallery');
 }
 
 function render() {
